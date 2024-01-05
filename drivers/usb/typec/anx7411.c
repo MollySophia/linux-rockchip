@@ -1432,6 +1432,7 @@ static int anx7411_psy_register(struct anx7411_data *ctx)
 	psy_desc->property_is_writeable = anx7411_psy_prop_writeable;
 
 	ctx->usb_type = POWER_SUPPLY_USB_TYPE_C;
+	psy_cfg.drv_data = (void*)ctx;
 	ctx->psy = devm_power_supply_register(ctx->dev, psy_desc, &psy_cfg);
 
 	if (IS_ERR(ctx->psy))
